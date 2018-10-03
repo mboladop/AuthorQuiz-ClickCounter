@@ -4,7 +4,7 @@ import './bootstrap.min.css';
 
 function Hero(){
   return (<div className="row">
-    <div class="jumbotron col-10 offset-1">
+    <div className="jumbotron col-10 offset-1">
       <h1>Author Quiz </h1>
       <p>Select the book written by the author shown :)</p>
     </div>
@@ -17,7 +17,13 @@ function Turn(){
 function Continue(){
   return (<div/>);
 }
-
+function Footer(){
+  return (<div id="footer" className="row">
+    <div className="col-12">
+      <p className="text-muted credit"> All images are from <a href="https://commons.wikimedia.org/"> Wikimedia Commons </a> and are in the public domain.</p>
+    </div>
+  </div>);
+}
 class AuthorQuiz extends Component {
   render() {
     return (
@@ -25,6 +31,7 @@ class AuthorQuiz extends Component {
       <Hero/>
       <Turn/>
       <Continue/>
+      <Footer/>
       </div>
     );
   }
