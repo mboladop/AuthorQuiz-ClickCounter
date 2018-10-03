@@ -26,3 +26,16 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.turn > div {
+  height: 400px;
+}
+
+.turn {
+  padding: 20px 0px;
+}
+
+.authorimage {
+  max-height: 100%;
+}
+
