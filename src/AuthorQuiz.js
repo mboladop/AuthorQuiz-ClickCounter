@@ -11,6 +11,13 @@ function Hero(){
   </div>);
 }
 
+function Book({title}) {
+  return (<div className="answer">
+    <h4>{title}</h4>
+
+  </div>);
+}
+
 function Turn({author, books}){
   return (<div className="row turn"style={{backgroundColor: "white"}}>
 
@@ -19,10 +26,10 @@ function Turn({author, books}){
     </div>
 
     <div className="col-6">
-     {books.map((title) => <p>{title}</p>)}
+     {books.map((title) => <Book title={title} key={title}/>)}
     </div>
 
-   </div>);
+  </div>);
 }
 
 function Continue() {
