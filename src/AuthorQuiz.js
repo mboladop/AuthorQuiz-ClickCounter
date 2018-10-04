@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './App.css';
 import './bootstrap.min.css';
 
@@ -11,14 +12,14 @@ function Hero(){
   </div>);
 }
 
-function Book({title}) {
-  return (<div className="answer">
+function Book({title, onClick}) {
+  return (<div className="answer" onClick={() => {onClick(title);}}>
     <h4>{title}</h4>
 
   </div>);
 }
 
-function Turn({author, books, highlight}){
+function Turn({author, books, highlight, onAnswerSelected}){
   function highlightToBgColor(highlight){
     const mapping = {
       'none': '', 
@@ -34,11 +35,25 @@ function Turn({author, books, highlight}){
     </div>
 
     <div className="col-6">
-     {books.map((title) => <Book title={title} key={title}/>)}
+     {books.map((title) => <Book title={title} key={title} onClick ={onAnswerSelected}/>)}
     </div>
 
   </div>);
 }
+Turn.propTypes = {
+  author: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    imageSource: PropTypes.string.isRequired,
+    books: PropTypes.arrayOf(PropTypes.string).isRequired
+  }), 
+  books: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onAnswerSelected: PropTypes.func.isRequired,
+  highlight: PropTypes.string.isRequired
+
+  
+
+};
 
 function Continue() {
   return (<div/>);
@@ -52,11 +67,11 @@ function Footer(){
     </div>
   </div>);
 }
-function AuthorQuiz({turnData, highlight}) {
+function AuthorQuiz({turnData, highlight, onAnswerSelected}) {
     return (
       <div className="container-fluid">
       <Hero/>
-      <Turn {...turnData} highlight={highlight}/>
+      <Turn {...turnData} highlight={highlight} onAnswerSelected={onAnswerSelected}/>
       <Continue/>
       <Footer/>
       </div>
