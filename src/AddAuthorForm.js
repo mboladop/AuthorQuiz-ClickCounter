@@ -9,6 +9,7 @@ class AuthorForm extends React.Component {
             imageUrl: ''
         };
         this.onFieldChange = this.onFieldChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleSubmit(event){
         event.preventDefault();
@@ -29,6 +30,7 @@ class AuthorForm extends React.Component {
                         <label htmlFor='imageUrl'>Image Url</label>
                         <input type='text' name='imageUrl' value={this.state.imageUrl} onChange={this.onFieldChange}/>
                     </div>
+                    <input type='submit' value='Add'/>
                </form>
     }
 }
