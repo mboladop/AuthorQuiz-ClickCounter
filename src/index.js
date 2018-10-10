@@ -73,6 +73,7 @@ const authors=[
     }
     
 ];
+
 function getTurnData(authors){
     const allBooks = authors.reduce(function (p,c,i) {
         return p.concat(c.books);
@@ -88,19 +89,30 @@ function getTurnData(authors){
     }
 }
 
-const state={
-    turnData: getTurnData(authors),
-    highlight: ''
-};
+function resetState() {
+    return {
+        turnData: getTurnData(authors),
+        highlight: ''
+    };
+}
+
+let state = resetState();
 
 function onAnswerSelected(answer){
     const isCorrect = state.turnData.author.books.some((book) => book === answer);
     state.highlight = isCorrect ? 'correct': 'wrong';
     render();
 }
+
 // ----------wrappers---------
+
 function App() {
-    return <AuthorQuiz {...state} onAnswerSelected={onAnswerSelected}/>;
+    return <AuthorQuiz {...state} 
+    onAnswerSelected={onAnswerSelected}
+    onContinue = {() =>{
+        state = resetState();
+        render();
+    }}/>;
 }
 
 const AuthorWrapper = withRouter( ({history}) =>
