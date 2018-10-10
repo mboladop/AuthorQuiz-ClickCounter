@@ -9,6 +9,10 @@ function AddAuthorForm(match) {
                 <label htmlFor='name'>Name</label>
                 <input type='text' name='name'/>
             </div>
+            <div className='AddAuthorForm_input'>
+                <label htmlFor='imageUrl'>Image Url</label>
+                <input type='text' name='imageUrl'/>
+            </div>
         </form>
     </div>;
 }
