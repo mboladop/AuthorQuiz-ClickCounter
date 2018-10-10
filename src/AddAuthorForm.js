@@ -2,15 +2,22 @@ import React from 'react';
 import'./AddAuthorForm.css';
 
 class AuthorForm extends React.Component {
+    constructor (props){
+        super(props);
+        this.state = {
+            name: '',
+            imageUrl: ''
+        };
+    }
     render () {
        return <form>
             <div className='AddAuthorForm_input'>
                 <label htmlFor='name'>Name</label>
-                <input type='text' name='name'/>
+                <input type='text' name='name' value={this.state.name}/>
             </div>
             <div className='AddAuthorForm_input'>
                 <label htmlFor='imageUrl'>Image Url</label>
-                <input type='text' name='imageUrl'/>
+                <input type='text' name='imageUrl' value={this.state.imageUrl}/>
             </div>
         </form>
     }
