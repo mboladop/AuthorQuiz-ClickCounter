@@ -6,7 +6,9 @@ class AuthorForm extends React.Component {
         super(props);
         this.state = {
             name: '',
-            imageUrl: ''
+            imageUrl: '',
+            books:[],
+            bookTemp:'',
         };
         this.onFieldChange = this.onFieldChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,6 +31,11 @@ class AuthorForm extends React.Component {
                     <div className='AddAuthorForm_input'>
                         <label htmlFor='imageUrl'>Image Url</label>
                         <input type='text' name='imageUrl' value={this.state.imageUrl} onChange={this.onFieldChange}/>
+                    </div>
+                    <div className='AddAuthorForm_input'>
+                        {this.state.books.map((book) => <p key={book}>{book}</p>)}
+                        <label htmlFor='bookTemp'>Books</label>
+                        <input type='text' name='bookTemp' value={this.state.bookTemp} onChange={this.onFieldChange}/>
                     </div>
                     <input type='submit' value='Add'/>
                </form>
