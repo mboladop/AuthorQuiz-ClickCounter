@@ -10,30 +10,34 @@ class AuthorForm extends React.Component {
         };
         this.onFieldChange = this.onFieldChange.bind(this);
     }
+    handleSubmit(event){
+        event.preventDefault();
+        this.props.onAddAuthor(this.state);
+    }
     onFieldChange(event){
         this.setState({
             [event.target.name]: event.target.value
         });
     }
     render () {
-       return <form>
-                <div className='AddAuthorForm_input'>
-                    <label htmlFor='name'>Name</label>
-                    <input type='text' name='name' value={this.state.name} onChange={this.onFieldChange}/>
-                </div>
-                <div className='AddAuthorForm_input'>
-                    <label htmlFor='imageUrl'>Image Url</label>
-                    <input type='text' name='imageUrl' value={this.state.imageUrl} onChange={this.onFieldChange}/>
-                </div>
-            </form>
+        return <form onSubmit={this.handleSubmit} >
+                    <div className='AddAuthorForm_input'>
+                        <label htmlFor='name'>Name</label>
+                        <input type='text' name='name' value={this.state.name} onChange={this.onFieldChange}/>
+                    </div>
+                    <div className='AddAuthorForm_input'>
+                        <label htmlFor='imageUrl'>Image Url</label>
+                        <input type='text' name='imageUrl' value={this.state.imageUrl} onChange={this.onFieldChange}/>
+                    </div>
+               </form>
     }
 }
 
 
-function AddAuthorForm({match}) {
+function AddAuthorForm({match, onAddAuthor}) {
     return <div className='AddAuthorForm'>
         <h1>Add Author</h1>
-        <AuthorForm/>
+        <AuthorForm onAddAuthor={onAddAuthor}/>
     </div>;
 }
 
