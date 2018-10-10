@@ -8,18 +8,24 @@ class AuthorForm extends React.Component {
             name: '',
             imageUrl: ''
         };
+        this.onFieldChange = this.onFieldChange.bind(this);
+    }
+    onFieldChange(event){
+        this.setState({
+            [event.target.name]: event.target.value
+        });
     }
     render () {
        return <form>
-            <div className='AddAuthorForm_input'>
-                <label htmlFor='name'>Name</label>
-                <input type='text' name='name' value={this.state.name}/>
-            </div>
-            <div className='AddAuthorForm_input'>
-                <label htmlFor='imageUrl'>Image Url</label>
-                <input type='text' name='imageUrl' value={this.state.imageUrl}/>
-            </div>
-        </form>
+                <div className='AddAuthorForm_input'>
+                    <label htmlFor='name'>Name</label>
+                    <input type='text' name='name' value={this.state.name} onChange={this.onFieldChange}/>
+                </div>
+                <div className='AddAuthorForm_input'>
+                    <label htmlFor='imageUrl'>Image Url</label>
+                    <input type='text' name='imageUrl' value={this.state.imageUrl} onChange={this.onFieldChange}/>
+                </div>
+            </form>
     }
 }
 
