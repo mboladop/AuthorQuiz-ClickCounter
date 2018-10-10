@@ -104,7 +104,9 @@ function App() {
 }
 
 function AuthorWrapper(){
-    return <AddAuthorForm onAddAuthor={console.log}/>;
+    return <AddAuthorForm onAddAuthor={(author) => {
+    authors.push(author);
+}}/>;
 }
 
 function render() {
