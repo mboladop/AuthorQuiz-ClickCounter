@@ -113,12 +113,14 @@ function onAnswerSelected(answer){
 // ----------wrappers---------
 
 function App() {
-    return <AuthorQuiz {...state} 
+    return <ReactRedux.Provider stroe={store}>
+    <AuthorQuiz {...state} 
     onAnswerSelected={onAnswerSelected}
     onContinue = {() =>{
         state = resetState();
         render();
-    }}/>;
+    }}/>
+    </ReactRedux.Provider>;
 }
 
 const AuthorWrapper = withRouter( ({history}) =>
