@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import './App.css';
 import './bootstrap.min.css';
@@ -73,7 +74,7 @@ function Footer(){
     </div>
   </div>);
 }
-function AuthorQuiz({turnData, highlight, onAnswerSelected, onContinue}) {
+const AuthorQuiz = connect(mapStateToProps, mapDispatchToProps)(function ({turnData, highlight, onAnswerSelected, onContinue}) {
     return (
       <div className="container-fluid">
       <Hero/>
