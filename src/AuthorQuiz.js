@@ -74,6 +74,25 @@ function Footer(){
     </div>
   </div>);
 }
+
+function mapStateToProps(state){
+  return{
+    turnData: state.turnData,
+    highlight: state.highlight
+  };
+}
+
+function mapDispatchToProps(dispatch){
+  return{
+    onAnswerSelected: (answer) =>{
+      dispatch({type:'ANSWER_SELECTED', answer})
+    },
+    onContinue: ()=>{
+      dispatch({type: 'CONTINUE'})
+    }
+  };
+}
+
 const AuthorQuiz = connect(mapStateToProps, mapDispatchToProps)(function ({turnData, highlight, onAnswerSelected, onContinue}) {
     return (
       <div className="container-fluid">
